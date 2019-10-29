@@ -105,7 +105,7 @@ public class BlankFragment extends Fragment {
     private void createNotification() {
         Intent intent = new Intent(getContext(), MainActivity.class);
         intent.putExtra(EXTRA_PAGE_TO_OPEN, pageNumber);
-        PendingIntent pendingIntent = PendingIntent.getService(getContext(), 0, intent, 0);
+        PendingIntent pendingIntent = PendingIntent.getActivity(getContext(), 1, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
         Notification notification = new NotificationCompat.Builder(getContext(), NOTIFICATION_CHANNEL_ID)
                 .setContentTitle(getString(R.string.notification_title))

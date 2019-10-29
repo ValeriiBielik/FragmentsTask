@@ -24,10 +24,10 @@ public class MainActivity extends AppCompatActivity implements BlankFragment.OnF
 
         viewPager.setAdapter(pageAdapter);
 
+        viewPager.setCurrentItem(0);
+
         if (getIntent().hasExtra(EXTRA_PAGE_TO_OPEN)) {
             viewPager.setCurrentItem(getIntent().getIntExtra(EXTRA_PAGE_TO_OPEN, 1) - 1);
-        } else {
-            viewPager.setCurrentItem(0);
         }
 
     }
@@ -44,5 +44,4 @@ public class MainActivity extends AppCompatActivity implements BlankFragment.OnF
         pageAdapter.removeFragment();
         viewPager.setCurrentItem(pageAdapter.getCount() - 1);
     }
-
 }
