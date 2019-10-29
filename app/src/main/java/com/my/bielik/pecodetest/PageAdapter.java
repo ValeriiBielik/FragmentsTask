@@ -8,17 +8,16 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentStatePagerAdapter;
 
-public class PageAdapter extends FragmentStatePagerAdapter {
+public class PageAdapter extends SmartFragmentStatePagerAdapter {
 
     private static final String TAG = "PageAdapter";
-
-    private List<Fragment> fragmentList = new ArrayList<>();
     private int maxPageNumber = 1;
 
-    PageAdapter(@NonNull FragmentManager fm) {
-        super(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+    private List<Fragment> fragmentList = new ArrayList<>();
+
+    public PageAdapter(FragmentManager fragmentManager) {
+        super(fragmentManager);
 
         addFragment();
     }
@@ -48,5 +47,11 @@ public class PageAdapter extends FragmentStatePagerAdapter {
     @Override
     public int getCount() {
         return fragmentList.size();
+    }
+
+    @Override
+    public int getItemPosition(Object object) {
+        if (fragmentList.contains(object)) return fragmentList.indexOf(object);
+        else return POSITION_NONE;
     }
 }

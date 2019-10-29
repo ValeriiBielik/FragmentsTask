@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity implements BlankFragment.OnF
     @Override
     public void onAddBtnClick(int currentPage) {
         pageAdapter.addFragment();
-        viewPager.setCurrentItem(currentPage);
+        viewPager.setCurrentItem(pageAdapter.getCount() - 1);
     }
 
     @Override
